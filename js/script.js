@@ -8,7 +8,10 @@
 */ 
 
 function addition() {
-	// your code goes here!
+	var num1 = Number(document.getElementById('additionInput1').value);
+    var num2 = Number(document.getElementById('additionInput2').value);
+
+    document.getElementById('additionButton').innerHTML = num1 + num2;
 }
 
 /* --------------------------------------------------------- */
@@ -28,7 +31,21 @@ function addition() {
 */ 
 
 function vowelCounter() {
-	// your code goes here!
+	var vowelInput = document.getElementById('vowelInput').value.toLowerCase();
+    var i;
+    var x;
+    var numVowels = 0;
+    var vowelCheck = 'aeiou';
+
+    for(i = 0; i < vowelInput.length; ++i) {
+        for(x = 0; x < vowelCheck.length; ++x) {
+            if(vowelInput.charAt(i) == vowelCheck.charAt(x)) {
+                ++numVowels;
+            }
+        }
+    }
+
+    document.getElementById('vowelInput').value = 'That sentence has ' + numVowels + ' vowel(s) in it.';
 }
 
 /* --------------------------------------------------------- */
@@ -58,12 +75,30 @@ function vowelCounter() {
 	For extra functionality, track the number of guesses the user has made, and print that as part of the result.
 */ 
 
+var randNum = Math.floor((Math.random() * 100) + 1);
+var result = document.getElementById('numberResult');
+
 function submit() {
-	
+    var guess = Number(document.getElementById('numberGuess').value);
+
+    console.log(randNum);
+    console.log(guess);
+
+    if(isNaN(guess)) {
+        result.innerHTML = 'Guess a number please.';
+    } else if(randNum < guess) {
+        result.innerHTML = 'Lower.';
+    } else if(randNum > guess) {
+        result.innerHTML = 'Higher.';
+    } else {
+        result.innerHTML = 'You win!';
+    }
 }
 
 function reset() {
+    randNum = Math.floor((Math.random() * 100) + 1);
 
+    result.innerHTML = 'Your result will go here.';
 }
 
 
